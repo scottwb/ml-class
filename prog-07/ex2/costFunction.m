@@ -20,11 +20,24 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+% REVISIT: Can I vectorize this more?
+s = 0;
+for i=1:m
+  z = theta' * X(i,:)';
+  h = sigmoid(z);
+  s = s + (-1 * y(i) * log(h)) - ((1 - y(i)) * log(1 - h));
+end
+J = s / m;
 
-
-
-
-
+for j=1:size(theta)
+  s = 0;
+  for i=1:m
+    z = theta' * X(i,:)';
+    h = sigmoid(z);
+    s = s + ((h - y(i)) * X(i,j));
+  end
+  grad(j) = s / m;
+end
 
 
 % =============================================================

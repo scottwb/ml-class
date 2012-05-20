@@ -12,9 +12,13 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+% Find indecies of positive and negative examples
+pos = find(y==1);
+neg = find(y==0);
 
-
-
+% Plot examples
+plot(X(pos,1), X(pos,2), 'k+', 'LineWidth', 2, 'MarkerSize', 7);
+plot(X(neg,1), X(neg,2), 'ko', 'LineWidth', 2, 'MarkerFaceColor', 'y', 'MarkerSize', 7);
 
 
 
