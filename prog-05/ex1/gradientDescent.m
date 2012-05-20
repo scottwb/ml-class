@@ -17,26 +17,7 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-
-    % REVISIT: Again, troubles with the syntax of octave vector stuff and
-    %          making the formulas from class work. Busting out the quick
-    %          manually iterative version like I did in python for the robotics
-    %          class, just to get this in by the deadline...which I only
-    %          made by 3 minutes.
-
-    s1 = 0;
-    s2 = 0;
-    for i=1:m
-      h = (theta(1) + (theta(2) * X(i,2)));
-      s1 = s1 + ((h - y(i)));
-      s2 = s2 + ((h - y(i)) * X(i,2));
-    end
-    s1 = (alpha/m) * s1;
-    s2 = (alpha/m) * s2;
-
-    theta(1) = theta(1) - s1;
-    theta(2) = theta(2) - s2;
-
+    theta = theta - ((X*theta - y)' * X)' .* (alpha/m);
 
     % ============================================================
 
